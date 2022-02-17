@@ -1,8 +1,13 @@
 # mbsid
-Mikrotik Billing System Generate Voucher Hotspot PHP &amp; 
+Mikrotik Billing System Generate Voucher Hotspot PHP 
+
 
 # Installation
 - Clone the repo: `git clone https://github.com/addrmwn/mbsid.git`
+- Edit Mainconfig.php 
+- adjust to your configuration starting from base url to database
+- import the mbsid.sql file which is in the database folder, into your phpmyadmin
+
 
 
 # Login
