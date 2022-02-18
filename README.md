@@ -8,6 +8,7 @@ Mikrotik Billing System Generate Voucher Hotspot PHP
 - Edit Mainconfig.php
 - adjust to your configuration starting from base url to database
 - import the mbsid.sql file which is in the database folder, into your phpmyadmin
+- Rename File htaccess to .htaccess
 
 # Login
 
