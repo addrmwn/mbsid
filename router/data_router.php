@@ -49,26 +49,6 @@ if (isset($_SESSION['user'])) {
                                     <h4 class="text-danger"><i class="fas fa-list"></i> Daftar Router</h4>
                                 </div>
                                 <div class="card-body">
-
-                                    <?php
-                                    if ($msg_type == "success") {
-                                    ?>
-                                        <div class="alert alert-success">
-                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                                            <i class="fa fa-check-circle"></i>
-                                            <?php echo $msg_content; ?>
-                                        </div>
-                                    <?php
-                                    } else if ($msg_type == "error") {
-                                    ?>
-                                        <div class="alert alert-danger">
-                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                                            <i class="fa fa-times-circle"></i>
-                                            <?php echo $msg_content; ?>
-                                        </div>
-                                    <?php
-                                    }
-                                    ?>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
@@ -142,7 +122,7 @@ if (isset($_SESSION['user'])) {
                                                         <td><label class="btn btn-<?php echo $label; ?>"><?php echo $data_show['status']; ?></label></td>
 
                                                         <td align="center">
-                                                            <button class="btn btn-sm btn-warning" data-toggle='modal' data-target='#show' data-id="<?= $data_show['sid'] ?>"><i class="fa fa-edit" title="Edit"></i></button>
+                                                            <a href="<?php echo $cfg_baseurl; ?>router/edit_router.php?id=<?php echo $data_show['id']; ?>" class="btn btn-sm btn-warning"> <i class="fa fa-edit" title="Edit"></i> </a>
                                                         </td>
                                                         <td align="center">
                                                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>?service_id=<?php echo $data_show['id']; ?>" class="form-inline" role="form" method="POST">
