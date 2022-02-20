@@ -35,7 +35,24 @@ if (isset($_SESSION['user'])) {
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Current Version V1.0</h4>
+                                    <h4>Current Version V1.1</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-unstyled list-unstyled-border mt-4">
+                                        <div class="media">
+                                            <div class="media-icon"><i class="far fa-circle"></i></div>
+                                            <div class="media-body">
+                                                <h6>V1.1</h6>
+                                                <p></p>
+                                                <p>20-02-2022<br>
+                                                    Added Multi Language ( Currently only available in Indonesian and English )<br>
+                                                    Added website settings
+                                                </p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="list-unstyled list-unstyled-border mt-4">
@@ -45,7 +62,7 @@ if (isset($_SESSION['user'])) {
                                                 <h6>V1.0</h6>
                                                 <p></p>
                                                 <p>17-02-2022<br>
-                                                    no latest updates
+                                                    successfully uploaded on github
                                                 </p>
                                             </div>
                                         </div>

@@ -14,6 +14,8 @@ if (isset($_SESSION['user'])) {
     } else if ($data_user['level'] != "Developers") {
         header("Location: " . $cfg_baseurl);
     } else {
+        include("../lib/header.php");
+
         if (isset($_POST['add'])) {
             $post_name = mysqli_real_escape_string($db, $_POST['name']);
             $post_category = mysqli_real_escape_string($db, $_POST['category']);
@@ -22,15 +24,15 @@ if (isset($_SESSION['user'])) {
             $datadb_service = mysqli_fetch_assoc($checkdb_service);
             if (empty($post_name) || empty($post_category)) {
                 $msg_type = "error";
-                $msg_content = "<b>Failed:</b> Please fill all inputs.";
+                $msg_content = $add_category_content_error;
             } else if (mysqli_num_rows($checkdb_service) > 0) {
                 $msg_type = "error";
-                $msg_content = "<b>Failed:</b> Nama $post_name already exist in database.";
+                $msg_content = $add_category_content_already;
             } else {
                 $insert_provider = mysqli_query($db, "INSERT INTO data_router_cat (name, code, category) VALUES ('$post_name', 'Router', '$post_category')");
                 if ($insert_provider == TRUE) {
                     $msg_type = "success";
-                    $msg_content = "<b>Success:</b> Service category successfully added.<br /><b>Name:</b> $post_name";
+                    $msg_content = $add_category_content_success;
                 } else {
                     $msg_type = "error";
                     $msg_content = "<b>Failed:</b> System Error.";
@@ -38,13 +40,12 @@ if (isset($_SESSION['user'])) {
             }
         }
 
-        include("../lib/header.php");
 ?>
         <!-- Main Content -->
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>Tambah Kategori</h1>
+                    <h1><?= $add_category; ?></h1>
                 </div>
 
                 <div class="section-body">
@@ -52,7 +53,7 @@ if (isset($_SESSION['user'])) {
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="text-danger"><i class="fas fa-list"></i> Tambah kategori</h4>
+                                    <h4 class="text-danger"><i class="fas fa-list"></i> <?= $add_category; ?></h4>
                                 </div>
                                 <div class="card-body">
                                     <?php
@@ -76,20 +77,20 @@ if (isset($_SESSION['user'])) {
                                     ?>
                                     <form class="form-horizontal" role="form" method="POST">
                                         <div class="form-group">
-                                            <label class="col-md-2 control-label">Nama</label>
+                                            <label class="col-md-2 control-label"><?= $add_category_name; ?></label>
                                             <div class="col-md-12">
-                                                <input type="text" name="name" class="form-control" placeholder="Contoh : Mikrotik Rumah">
+                                                <input type="text" name="name" class="form-control" placeholder="Example : Home Mikrotik">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-2 control-label">Category</label>
+                                            <label class="col-md-2 control-label"><?= $code; ?></label>
                                             <div class="col-md-12">
-                                                <input type="text" name="category" class="form-control" placeholder="Contoh : MR">
+                                                <input type="text" name="category" class="form-control" placeholder="Example : MR">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-offset-2 col-md-10">
-                                                <a href="<?php $cfg_baseurl; ?>kat_router" class="btn btn-danger"><i class="fas fa-arrow-alt-circle-left"></i> Kembali</a>
+                                                <a href="<?php $cfg_baseurl; ?>kat_router" class="btn btn-danger"><i class="fas fa-arrow-alt-circle-left"></i> <?= $back; ?></a>
                                                 <button type="submit" class="btn btn-primary" name="add"><i class="fa fa-paper-plane"></i> Submit </button>
                                             </div>
                                         </div>
@@ -101,26 +102,6 @@ if (isset($_SESSION['user'])) {
                 </div>
         </div>
         </div>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("#category_router").change(function() {
-                    var category = $("#category_router").val();
-                    $.ajax({
-                        url: '<?php echo $cfg_baseurl; ?>admin/inc/service_router.php',
-                        data: 'category=' + category,
-                        type: 'POST',
-                        dataType: 'html',
-                        success: function(msg) {
-                            $("#input_router").html(msg);
-                        }
-                    });
-                });
-
-            });
-        </script>
-
 <?php
         include("../lib/footer.php");
     }

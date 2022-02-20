@@ -15,6 +15,7 @@ if (isset($_SESSION['user'])) {
     header("Location: " . $cfg_baseurl . "auth/login");
 }
 
+
 $queryto = mysqli_query($db, "SELECT * FROM data_router");
 $tampilto = mysqli_num_rows($queryto);
 
@@ -51,10 +52,10 @@ include("lib/header.php");
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Voucher pada database</h4>
+                            <h4><?= $total_voucher; ?></h4>
                         </div>
                         <div class="card-body">
-                            <?php echo $hitung_voucher; ?>
+                            <?php echo $hitung_voucher; ?> Voucher
                         </div>
                     </div>
                 </div>
@@ -66,10 +67,16 @@ include("lib/header.php");
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Pembelian hari ini</h4>
+                            <h4><?= $purchase_today; ?></h4>
                         </div>
                         <div class="card-body">
-                            Rp <?php echo number_format($profit_today['total'], 0, ',', ','); ?>
+                            <?php if ($currency == "Rp") {
+                                $income = number_format($profit_today['total'], 0, ',', ',');
+                            } else {
+                                $income = number_format($profit_today['total'], 0, ',', ',');
+                            }
+                            ?>
+                            <?= $currency; ?> <?= $income; ?>
                         </div>
                     </div>
                 </div>
@@ -81,10 +88,16 @@ include("lib/header.php");
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Pembelian Bulan ini</h4>
+                            <h4><?= $purchase_month; ?></h4>
                         </div>
                         <div class="card-body">
-                            Rp <?php echo number_format($profit_month['total'], 0, ',', ','); ?>
+                            <?php if ($currency == "Rp") {
+                                $income = number_format($profit_month['total'], 0, ',', ',');
+                            } else {
+                                $income = number_format($profit_month['total'], 2, '.', ',');
+                            }
+                            ?>
+                            <?= $currency; ?> <?= $income; ?>
                         </div>
                     </div>
                 </div>

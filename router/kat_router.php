@@ -14,6 +14,8 @@ if (isset($_SESSION['user'])) {
     } else if ($data_user['level'] != "Developers") {
         header("Location: " . $cfg_baseurl);
     } else {
+
+
         if (isset($_POST['add'])) {
             $post_id = mysqli_real_escape_string($db, $_POST['id']);
             $post_name = mysqli_real_escape_string($db, $_POST['name']);
@@ -53,12 +55,14 @@ if (isset($_SESSION['user'])) {
         }
 
         include("../lib/header.php");
+
 ?>
         <!-- Main Content -->
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>Kategori</h1>
+                    <h1><?= $category; ?>
+                    </h1>
                 </div>
 
                 <div class="section-body">
@@ -67,7 +71,7 @@ if (isset($_SESSION['user'])) {
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="text-danger"><i class="fas fa-list"></i> Daftar Kategori</h4>
+                                    <h4 class="text-danger"><i class="fas fa-list"></i> <?= $category_list; ?></h4>
                                 </div>
                                 <div class="card-body">
                                     <?php
@@ -93,7 +97,7 @@ if (isset($_SESSION['user'])) {
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <a href="<?php $cfg_baseurl; ?>add_kat" class="btn btn-lg btn-primary mb-3 font-weight-bold">Tambah Kategori</a>
+                                                    <a href="<?php $cfg_baseurl; ?>add_kat" class="btn btn-lg btn-primary mb-3 font-weight-bold"><i class="fas fa-plus-circle"></i> <?= $add_category; ?></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -103,9 +107,9 @@ if (isset($_SESSION['user'])) {
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nama Provider</th>
-                                                    <th>Kode</th>
-                                                    <th>Aksi</th>
+                                                    <th><?= $name_server; ?></th>
+                                                    <th><?= $code; ?></th>
+                                                    <th><?= $action; ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -129,8 +133,8 @@ if (isset($_SESSION['user'])) {
                                                             <td><?php echo $no; ?></td>
                                                             <td><?php echo $data_show['name']; ?></td>
                                                             <td><?php echo $data_show['category']; ?></td>
-                                                            <td align="center">
-                                                                <button type="submit" name="delete" class="btn btn-xs btn-danger"><i class="fa fa-trash" title="Hapus"></i></button>
+                                                            <td>
+                                                                <button type="submit" name="delete" class="btn btn-xs btn-danger"><i class="fa fa-trash" title="Delete"></i> <?= $delete; ?></button>
                                                             </td>
                                                         </form>
                                                     </tr>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2022 at 02:13 AM
+-- Generation Time: Feb 20, 2022 at 01:19 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mikbill-free`
+-- Database: `mbsid`
 --
 
 -- --------------------------------------------------------
@@ -56,7 +56,7 @@ CREATE TABLE `data_router_cat` (
 --
 
 INSERT INTO `data_router_cat` (`id`, `name`, `code`, `category`) VALUES
-(2, 'Mikrotik Rumah', 'Router', 'MR');
+(6, 'Mikrotik Rumah', 'Router', 'MR');
 
 -- --------------------------------------------------------
 
@@ -167,6 +167,7 @@ CREATE TABLE `website` (
   `logo` varchar(200) COLLATE utf8_swedish_ci NOT NULL,
   `logo_text` varchar(100) COLLATE utf8_swedish_ci NOT NULL,
   `text_mini` text COLLATE utf8_swedish_ci NOT NULL,
+  `lang` enum('id','en') COLLATE utf8_swedish_ci NOT NULL,
   `author` varchar(100) COLLATE utf8_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
@@ -174,8 +175,8 @@ CREATE TABLE `website` (
 -- Dumping data for table `website`
 --
 
-INSERT INTO `website` (`id`, `title`, `logo`, `logo_text`, `text_mini`, `author`) VALUES
-(1, 'MBS ID', 'cover.png', 'MBS ID', 'MBS', 'Adi Darmawan');
+INSERT INTO `website` (`id`, `title`, `logo`, `logo_text`, `text_mini`, `lang`, `author`) VALUES
+(1, 'MBS ID', 'cover.png', 'MBS ID', 'MBS', 'id', 'Adi Darmawan');
 
 --
 -- Indexes for dumped tables
@@ -237,31 +238,31 @@ ALTER TABLE `website`
 -- AUTO_INCREMENT for table `data_router`
 --
 ALTER TABLE `data_router`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `data_router_cat`
 --
 ALTER TABLE `data_router_cat`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `service_cat`

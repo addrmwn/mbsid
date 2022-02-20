@@ -2,6 +2,12 @@
 
 Mikrotik Billing System Generate Voucher Hotspot PHP
 
+# Changelogs
+
+22-02-2022 <br>
+Added Multi Language ( Currently only available in Indonesian and English )<br>
+Added website settings
+
 # Installation
 
 - Clone the repo: `git clone https://github.com/addrmwn/mbsid.git`

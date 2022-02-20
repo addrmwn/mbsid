@@ -1,7 +1,12 @@
 <?php
 $check_website = $db->query("SELECT * FROM website WHERE id ='1'");
 $data_website = $check_website->fetch_assoc();
+$lang = $data_website['lang'];
 
+include('./lang/' . $lang . '.php');
+
+$langcode = $data_website['lang'];
+include("../lang/" . $lang . ".php");
 
 ?>
 <!DOCTYPE html>
@@ -72,7 +77,7 @@ $data_website = $check_website->fetch_assoc();
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
-                        <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                        <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>"><i class="fas fa-home"></i> <span><?= $dahboard; ?></span></a></li>
                         <?php
                         if (isset($_SESSION['user'])) {
                         ?>
@@ -81,8 +86,7 @@ $data_website = $check_website->fetch_assoc();
                                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-server"></i> <span>Menu Router</span></a>
                                 <ul class="dropdown-menu">
 
-                                    <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>router/kat_router">Kategori Router
-                                        </a></li>
+                                    <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>router/kat_router"><?php echo $category_router; ?></a></li>
                                     <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>router/data_router">Data Router</a></li>
                                     <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>router/test_login">Test Login</a></li>
                                     <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>router/add_profile">Tambah User Profile</a></li>
@@ -100,9 +104,11 @@ $data_website = $check_website->fetch_assoc();
                             <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>pages/report"><i class="fas fa-money-check"></i> <span>Report</span></a></li>
 
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i> <span>Pengaturan</span></a>
+                                <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i> <span><?= $settings; ?></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>user/setting">Pengaturan Akun</a></li>
+                                    <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>user/setting"><?= $account_settings; ?></a></li>
+                                    <li><a class="nav-link" href="<?php echo $cfg_baseurl; ?>user/setweb"><?= $website_settings; ?></a></li>
+
                                 </ul>
                             </li>
 

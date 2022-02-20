@@ -20,3 +20,4 @@ $time = date("H:i:s");
 // require
 require("lib/database.php");
 require("lib/function.php");
+include("lang/codelang.php");
