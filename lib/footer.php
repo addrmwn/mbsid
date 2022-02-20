@@ -1,7 +1,7 @@
 <!-- Jangan hapus copyright hargai developer -->
 <footer class="main-footer">
     <div class="footer-left">
-        Copyright &copy; <?php echo date("Y"); ?> Mikbill
+        Copyright &copy; <?php echo date("Y"); ?> <?php echo $data_website['logo_text']; ?>
 
 </footer>
 </div>
